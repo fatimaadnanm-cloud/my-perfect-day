@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Perfect Day</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Home Page -->
+  <div id="home">
+    <h1>My Perfect Day</h1>
+    <p>
+      Everyone has a different idea of a perfect day.
+      Let's find one that works for everyone.
+    </p>
+    <button onclick="start()">Start</button>
+  </div>
+
+  <!-- Number of People -->
+  <div id="people-step" style="display:none;">
+    <label for="people">How many people are planning?</label>
+    <input type="number" id="people" min="1" max="10" placeholder="Enter Number">
+    <button onclick="next()">Next</button>
+  </div>
+
+  <!-- Location & Budget (asked ONCE for the whole group) -->
+  <div id="location-step" style="display:none;">
+    <h2>Where are you all planning this?</h2>
+    <label for="country-input">Country</label>
+    <input type="text" id="country-input" placeholder="e.g. Pakistan">
+    <label for="city-input">City</label>
+    <input type="text" id="city-input" placeholder="e.g. Karachi">
+
+    <h3>What's the budget?</h3>
+    <p class="hint-text">Currency is guessed from your country — edit it if it's wrong.</p>
+    <div id="budget-row">
+      <input type="text" id="currency-input" placeholder="Rs">
+      <input type="number" id="budget-min" placeholder="Min e.g. 50000">
+      <span class="budget-dash">–</span>
+      <input type="number" id="budget-max" placeholder="Max e.g. 60000">
+    </div>
+
+    <br>
+    <button onclick="locationNext()">Next</button>
+  </div>
+
+  <!-- Name Entry -->
+  <div id="name-step" style="display:none;">
+    <h2 id="name-heading">Participant 1</h2>
+    <label for="name-input">What's your name?</label>
+    <input type="text" id="name-input" placeholder="Enter your name">
+    <button onclick="submitName()">Continue</button>
+  </div>
+
+  <!-- Preferences -->
+  <div id="preferences" style="display:none;">
+    <h2 id="person-heading">Person 1</h2>
+
+    <h3>What activity sounds fun?</h3>
+    <p class="hint-text">Leave blank to skip</p>
+    <input type="text" id="activity-input" placeholder="Type any activity, e.g. Hiking">
+
+    <h3>What mood are you in?</h3>
+    <p class="hint-text">Leave blank to skip</p>
+    <input type="text" id="mood-input" placeholder="Type your mood, e.g. Relaxed">
+
+    <h3>What environment do you want?</h3>
+    <p class="hint-text">Leave blank to skip</p>
+    <input type="text" id="environment-input" placeholder="e.g. Outdoor, quiet, family-friendly">
+
+    <h3>What type of place?</h3>
+    <p class="hint-text">Optional — pick one if you have something specific in mind</p>
+    <select id="place-type-input">
+      <option value="">Select a type</option>
+      <option value="Restaurant">Restaurant</option>
+      <option value="Cafe">Cafe</option>
+      <option value="Bar">Bar</option>
+      <option value="Museum">Museum</option>
+      <option value="Library">Library</option>
+      <option value="Park">Park</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <div id="place-detail-wrap" style="display:none;">
+      <h3 id="place-detail-label">Details</h3>
+      <p class="hint-text">Leave blank to skip</p>
+      <input type="text" id="place-detail-input" placeholder="">
+    </div>
+
+    <br><br>
+    <button onclick="nextPerson()">Next Person</button>
+  </div>
+
+  <!-- Result -->
+  <div id="result" style="display:none;">
+    <h1>Perfect Day</h1>
+    <p id="result-intro">We found something you all have in common!</p>
+
+    <div class="result-box">
+      <h2>Location & Budget</h2>
+      <p id="location-result">—</p>
+    </div>
+
+    <div class="result-box">
+      <h2>Activity</h2>
+      <p id="activity-result">Activity will appear here</p>
+    </div>
+
+    <div class="result-box">
+      <h2>Mood</h2>
+      <p id="mood-result">Mood will appear here</p>
+    </div>
+
+    <div class="result-box">
+      <h2>Environment</h2>
+      <p id="environment-result">Environment will appear here</p>
+    </div>
+
+    <div class="result-box">
+      <h2>Place Type</h2>
+      <p id="place-result">Place type will appear here</p>
+    </div>
+
+    <h2 style="margin-top:20px;">Places to check out</h2>
+    <div id="recommendations">
+      <p class="rec-status" id="rec-status">Looking things up…</p>
+    </div>
+
+    <button onclick="restart()">Make Another Day</button>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
